@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.2.0_278ec199310fed02ffbcf9f03e0c8b1dfc03cd2a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.2.0_cbc20fbe671704ec19efce498025a3e1f9f391e6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.2.0_d03093e87c16f65ba3bd4f810d5840126651e504.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.2.0_5ea992298897cd31fc6f98d112eae919b538ac74.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\libs\temboo-android-sdk-core-2.16.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="59c46c41c78be67b2c86efb9dab9390b7171582d">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\temboo-android-sdk-core-2.16.0_2f0d10b1836069b02a62b512db7faccd3a596fc0.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v2.2.3\f474798fde03291398b1a016118b9809a79550b7\MPAndroidChart-v2.2.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f474798fde03291398b1a016118b9809a79550b7">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\MPAndroidChart-v2.2.3_20d79251393506fad34d69c047ad6e449ff317fd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\exploded-aar\com.android.support\customtabs\23.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="596fcec5b5b7080d2e5525dae976b5e9967a6b22">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\com.android.support-customtabs-23.2.0_92bbb4299ab7eb97910307fef5e8027bc4e8f209.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\libs\internal_impl-23.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.0_9d96e070e52c2b865cf646e99d86a1ae46a9a0c1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\Documents\GitHub\DObs\app\libs\Fitbit-2.16.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="cbdf49b367a2b96f80daab4a1d50e79ebf541618">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\Fitbit-2.16.0_22b7b4553e64b7f09f287a98380069fb1a0b2fac.jar" />
+    </item>
+    <item
+        jar="C:\Users\Dade\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="C:\Users\Dade\Documents\GitHub\DObs\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.0_b9029606e72e0232b414b4def81ed40baeec7ecc.jar" />
+    </item>
+
+</items>

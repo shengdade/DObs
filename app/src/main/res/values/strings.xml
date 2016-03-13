@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">DObs</string>
+    <string name="DObs">Dementia Observation</string>
+    <string name="Manage">Manage</string>
+    <string name="Collect">Collect</string>
+    <string name="View">VIew</string>
+    <string name="Export">Export</string>
+    <string name="ok">OK</string>
+    <string name="ID">ID #</string>
+    <string name="labelIDHint">Numeric or Alpha</string>
+    <string name="trackingIntervals">Tracking Intervals</string>
+    <string name="fifteenMinutes">15 minutes</string>
+    <string name="thirtyMinutes">30 minutes</string>
+    <string name="addBehavior1">1. Enter new behavior</string>
+    <string name="addBehavior2">2. Enter new behavior</string>
+    <string name="addBehavior3">3. Enter new behavior</string>
+    <string name="addBehavior4">4. Enter new behavior</string>
+    <string name="labelEvent">Incident Description:</string>
+    <string name="PRN">PRN Medicine</string>
+    <string name="Aggressive">Aggressive Incident</string>
+    <string name="oauthSuccess">Authentication success! \n\nPress okay to continue.</string>
+    <string name="Fall">Fall</string>
+    <string name="labelExport">Select a period to export:</string>
+    <string name="labelStartDate">start date</string>
+    <string name="labelEndDate">end date</string>
+
+</resources>
