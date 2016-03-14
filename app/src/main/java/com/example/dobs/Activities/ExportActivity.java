@@ -41,6 +41,7 @@ public class ExportActivity extends AppCompatActivity {
         startDate = Calendar.getInstance();
         endDate = Calendar.getInstance();
         startDate.add(Calendar.WEEK_OF_YEAR, -1);
+        startDate.add(Calendar.DAY_OF_MONTH, 1);
 
         startDateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -67,6 +68,7 @@ public class ExportActivity extends AppCompatActivity {
                 Calendar startDateShown = Calendar.getInstance();
                 startDateShown.setTime(endDate.getTime());
                 startDateShown.add(Calendar.WEEK_OF_YEAR, -1);
+                startDateShown.add(Calendar.DAY_OF_MONTH, 1);
                 new DatePickerDialog(context, startDateListener, startDateShown.get(Calendar.YEAR), startDateShown.get(Calendar.MONTH), startDateShown.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -76,6 +78,7 @@ public class ExportActivity extends AppCompatActivity {
                 Calendar endDateShown = Calendar.getInstance();
                 endDateShown.setTime(startDate.getTime());
                 endDateShown.add(Calendar.WEEK_OF_YEAR, 1);
+                endDateShown.add(Calendar.DAY_OF_MONTH, -1);
                 new DatePickerDialog(context, endDateListener, endDateShown.get(Calendar.YEAR), endDateShown.get(Calendar.MONTH), endDateShown.get(Calendar.DAY_OF_MONTH)).show();
             }
         });

@@ -92,6 +92,7 @@
     <orderEntry type="library" exported="" name="support-annotations-23.2.0" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-23.2.0" level="project" />
     <orderEntry type="library" exported="" name="temboo-android-sdk-core-2.16.0" level="project" />
+    <orderEntry type="library" exported="" name="poi-3.14-20160307" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.2.0" level="project" />
     <orderEntry type="library" exported="" name="MPAndroidChart-v2.2.3" level="project" />
     <orderEntry type="library" exported="" name="Fitbit-2.16.0" level="project" />
