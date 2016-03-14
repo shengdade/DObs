@@ -79,17 +79,22 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
     public void writeExcel(List<BehaviorRecord> behaviors, String excelFileName) throws IOException {
         Workbook workbook = getWorkbook(excelFileName);
         Sheet sheet = workbook.createSheet();
+        sheet.setDefaultColumnWidth(20);
         createHeaderRow(sheet);
+        createHeaderColumn(sheet);
 
         writeToFile(workbook, excelFileName);
     }
 
     private void createHeaderRow(Sheet sheet) {
-
-        sheet.setDefaultColumnWidth(20);
         CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
         cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+        // set the corner cell name
         Row row = sheet.createRow(0);
+        Cell cellCorner = row.createCell(0);
+        cellCorner.setCellStyle(cellStyle);
+        cellCorner.setCellValue("TIME");
+
         long days = countDays();
 
         logDate(startDate);
@@ -107,11 +112,37 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         }
     }
 
+    private void createHeaderColumn(Sheet sheet) {
+        int trackingInterval = MainActivity.patient.trackingInterval;
+        CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
+        cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+        int intervals = countIntervals(trackingInterval);
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.HOUR_OF_DAY, 7);
+        date.set(Calendar.MINUTE, 30);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.CANADA);
+        for (int i = 1; i <= intervals; i++) {
+            Row row = sheet.createRow(i);
+            Cell firstCell = row.createCell(0);
+            firstCell.setCellStyle(cellStyle);
+            firstCell.setCellValue(sdf.format(date.getTime()));
+            date.add(Calendar.MINUTE, trackingInterval);
+        }
+    }
+
     private long countDays() {
         long milis1 = startDate.getTimeInMillis();
         long milis2 = endDate.getTimeInMillis();
         long diff = Math.abs(milis2 - milis1);
         return (TimeUnit.MILLISECONDS.toDays(diff) + 1);
+    }
+
+    private int countIntervals(int trackingInterval) {
+        if (trackingInterval == 30) {
+            return 48;
+        } else {
+            return 96;
+        }
     }
 
     private void writeToFile(Workbook workbook, String excelFileName) {

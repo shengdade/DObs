@@ -3,15 +3,19 @@ package com.example.dobs.Activities;
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.dobs.Classes.Patient;
 import com.example.dobs.R;
 import com.example.dobs.Tasks.ExportExcelTask;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -29,6 +33,8 @@ public class ExportActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_export);
+        if (MainActivity.patient == null)//In this case, the user has already created a profile
+            MainActivity.patient = readPatient();
 
         editStart = (EditText) findViewById(R.id.editStart);
         editEnd = (EditText) findViewById(R.id.editEnd);
@@ -123,5 +129,19 @@ public class ExportActivity extends AppCompatActivity {
         String myFormat = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
         editText.setText(sdf.format(date.getTime()));
+    }
+
+    private Patient readPatient() {
+        Patient patient = null;
+        try {
+            FileInputStream fis = openFileInput(MainActivity.patientFilename);
+            ObjectInputStream is = new ObjectInputStream(fis);
+            patient = (Patient) is.readObject();
+            is.close();
+            fis.close();
+        } catch (Exception e) {
+            Log.e(TAG, "Exception: " + e.getMessage());
+        }
+        return patient;
     }
 }

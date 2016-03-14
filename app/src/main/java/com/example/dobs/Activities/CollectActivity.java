@@ -25,7 +25,8 @@ public class CollectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collect);
-        MainActivity.patient = readPatient();
+        if (MainActivity.patient == null)//In this case, the user has already created a profile
+            MainActivity.patient = readPatient();
 
         timeBehavior = (TimePicker) findViewById(R.id.timeBehavior);
         final TimePicker timeEvent = (TimePicker) findViewById(R.id.timeEvent);
