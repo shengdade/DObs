@@ -15,9 +15,6 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Calendar;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class CollectActivity extends AppCompatActivity {
     private static final String TAG = "CollectActivity";
     public final static String tagBehavior = "timeBehavior";

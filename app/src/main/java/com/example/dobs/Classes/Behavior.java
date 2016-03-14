@@ -4,9 +4,6 @@ import com.example.dobs.R;
 
 import java.io.Serializable;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class Behavior implements Serializable {
 
     public String name;

@@ -13,9 +13,6 @@ import com.temboo.Library.Fitbit.Statistics.GetIntradayTimeSeries.GetIntradayTim
 import com.temboo.Library.Fitbit.Statistics.GetIntradayTimeSeries.GetIntradayTimeSeriesResultSet;
 import com.temboo.core.TembooSession;
 
-/**
- * Created by Dade on 03/03/2016.
- */
 public class FetchMotionTask extends AsyncTask<Void, Void, String> {
 
     private TextView textView;

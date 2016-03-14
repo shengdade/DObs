@@ -11,9 +11,6 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.temboo.Library.Fitbit.Sleep.GetSleep;
 import com.temboo.core.TembooSession;
 
-/**
- * Created by Dade on 03/03/2016.
- */
 public class FetchSleepTask extends AsyncTask<Void, Void, String> {
 
     private TextView textView;

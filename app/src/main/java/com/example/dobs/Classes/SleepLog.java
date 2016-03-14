@@ -9,9 +9,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by Dade on 02/03/2016.
- */
 public class SleepLog {
     private int totalMinutesAsleep;
     private int totalTimeInBed;

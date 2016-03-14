@@ -1,16 +1,11 @@
 package com.example.dobs.Classes;
 
-import android.util.Log;
-
 import com.example.dobs.R;
 
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-/**
- * Created by dade on 16/02/16.
- */
 public class BehaviorRecord implements Serializable {
     public Calendar time;
     public Behavior behavior;

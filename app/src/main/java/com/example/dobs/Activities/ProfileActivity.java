@@ -10,9 +10,6 @@ import com.example.dobs.Fragments.CreateProfile;
 
 import java.io.File;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class ProfileActivity extends AppCompatActivity {
 
     @Override

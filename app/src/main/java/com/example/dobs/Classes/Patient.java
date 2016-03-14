@@ -5,9 +5,6 @@ import com.example.dobs.R;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class Patient implements Serializable {
     public String ID;
     public int trackingInterval;

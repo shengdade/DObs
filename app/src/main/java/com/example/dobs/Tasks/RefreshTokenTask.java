@@ -14,9 +14,6 @@ import com.temboo.core.TembooSession;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
-/**
- * Created by Dade on 03/03/2016.
- */
 public class RefreshTokenTask extends AsyncTask<Void, Void, Void> {
 
     private AppCompatActivity context;

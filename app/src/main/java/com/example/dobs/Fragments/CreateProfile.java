@@ -17,9 +17,6 @@ import com.example.dobs.Tasks.InitializeOAuthTask;
 
 import java.util.Random;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class CreateProfile extends Fragment implements RadioGroup.OnCheckedChangeListener {
     private static final String TAG = "CreateProfile";
     private EditText editID;

@@ -15,9 +15,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class BehaviorView extends ArrayAdapter<BehaviorRecord> {
     private static final String TAG = "BehaviorViewAdapter";
 

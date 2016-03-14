@@ -22,9 +22,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class ChooseBehaviors extends ListFragment {
     private static final String TAG = "ChooseBehaviors";
 

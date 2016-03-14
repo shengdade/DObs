@@ -9,9 +9,6 @@ import android.widget.Toast;
 import com.example.dobs.Classes.EventRecord;
 import com.example.dobs.R;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class EventActivity extends AppCompatActivity {
     public static EventRecord eventRecord;
 

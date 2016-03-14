@@ -10,9 +10,6 @@ import android.util.Log;
 import com.temboo.Library.Fitbit.OAuth.InitializeOAuth;
 import com.temboo.core.TembooSession;
 
-/**
- * Created by Dade on 03/03/2016.
- */
 public class InitializeOAuthTask extends AsyncTask<Void, Void, String> {
 
     private Activity context;

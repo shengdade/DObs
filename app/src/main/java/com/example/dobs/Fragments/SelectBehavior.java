@@ -17,9 +17,6 @@ import com.example.dobs.R;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-/**
- * Created by dade on 16/02/16.
- */
 public class SelectBehavior extends ListFragment {
     private static final String TAG = "SelectBehavior";
 

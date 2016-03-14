@@ -7,9 +7,6 @@ import com.example.dobs.Activities.MainActivity;
 import com.temboo.Library.Fitbit.OAuth.FinalizeOAuth;
 import com.temboo.core.TembooSession;
 
-/**
- * Created by Dade on 03/03/2016.
- */
 public class FinalizeOAuthTask extends AsyncTask<Void, Void, Void> {
     private String CallbackID;
 

@@ -12,9 +12,6 @@ import android.widget.ProgressBar;
 
 import com.example.dobs.R;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class LoadScreen extends Fragment {
     private static final String TAG = "LoadScreen";
     private ProgressBar progressBar;

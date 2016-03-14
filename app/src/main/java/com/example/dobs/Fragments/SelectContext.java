@@ -15,9 +15,6 @@ import com.example.dobs.Activities.MainActivity;
 import com.example.dobs.Classes.BehaviorRecord;
 import com.example.dobs.R;
 
-/**
- * Created by dade on 16/02/16.
- */
 public class SelectContext extends ListFragment {
     private static final String TAG = "SelectContext";
     private AsyncTask task = null;

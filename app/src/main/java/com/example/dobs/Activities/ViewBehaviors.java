@@ -18,9 +18,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class ViewBehaviors extends ListActivity {
     private static final String TAG = "ViewBehaviors";
     List<BehaviorRecord> behaviors;

@@ -19,9 +19,6 @@ import com.example.dobs.R;
 
 import java.io.File;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
 

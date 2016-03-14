@@ -15,9 +15,6 @@ import com.example.dobs.R;
 
 import java.util.List;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class BehaviorSelect extends ArrayAdapter<Behavior> {
     private static final String TAG = "BehaviorSelectAdapter";
 

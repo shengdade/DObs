@@ -10,9 +10,6 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "DObs.db";
     private static final int SCHEMA = 1;

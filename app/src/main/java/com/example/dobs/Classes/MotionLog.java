@@ -9,9 +9,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by Dade on 02/03/2016.
- */
 public class MotionLog {
     private ArrayList<BarEntry> entries;
     private ArrayList<String> labels;

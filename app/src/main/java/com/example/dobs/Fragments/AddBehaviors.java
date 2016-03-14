@@ -13,9 +13,6 @@ import com.example.dobs.Activities.MainActivity;
 import com.example.dobs.Classes.Behavior;
 import com.example.dobs.R;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class AddBehaviors extends Fragment {
     private static final String TAG = "AddBehaviors";
     private EditText newBehavior1;

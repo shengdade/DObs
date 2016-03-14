@@ -8,9 +8,6 @@ import com.example.dobs.Classes.Patient;
 import com.example.dobs.Fragments.LoadScreen;
 import com.example.dobs.R;
 
-/**
- * Created by dade on 15/02/16.
- */
 public class MainActivity extends AppCompatActivity {
     public static Patient patient;
     public static String patientFilename = "patient.dat";

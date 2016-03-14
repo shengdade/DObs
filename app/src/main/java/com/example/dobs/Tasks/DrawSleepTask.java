@@ -11,9 +11,6 @@ import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
 
-/**
- * Created by Dade on 03/03/2016.
- */
 public class DrawSleepTask extends AsyncTask<Void, Void, Void> {
     private BarChart chart;
     private ArrayList<String> labels;

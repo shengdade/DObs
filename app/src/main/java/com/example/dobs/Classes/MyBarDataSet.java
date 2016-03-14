@@ -5,9 +5,6 @@ import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.List;
 
-/**
- * Created by Dade on 03/03/2016.
- */
 public class MyBarDataSet extends BarDataSet {
 
     public MyBarDataSet(List<BarEntry> yVals, String label) {
