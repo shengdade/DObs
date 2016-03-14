@@ -10,6 +10,7 @@ import com.example.dobs.Classes.EventRecord;
 import com.example.dobs.R;
 
 public class EventActivity extends AppCompatActivity {
+    private static final String TAG = " EventActivity";
     public static EventRecord eventRecord;
 
     @Override
