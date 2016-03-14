@@ -3,7 +3,6 @@ package com.example.dobs.Activities;
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -11,9 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.dobs.R;
+import com.example.dobs.Tasks.ExportExcelTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class ExportActivity extends AppCompatActivity {
@@ -101,9 +102,13 @@ public class ExportActivity extends AppCompatActivity {
         if (editStart.getText().toString().equals("") || editEnd.getText().toString().equals("")) {
             Toast.makeText(context, "Please specify a period.", Toast.LENGTH_SHORT).show();
         } else {
-            String myFormat = "yyyy-MM-dd";
-            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
-            Log.i(TAG, sdf.format(startDate.getTime()) + " || " + sdf.format(endDate.getTime()));
+//            String myFormat = "yyyy-MM-dd";
+//            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
+//            Log.i(TAG, sdf.format(startDate.getTime()) + " || " + sdf.format(endDate.getTime()));
+            GregorianCalendar start = new GregorianCalendar(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DAY_OF_MONTH));
+            GregorianCalendar end = new GregorianCalendar(endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH), endDate.get(Calendar.DAY_OF_MONTH));
+            end.add(Calendar.DAY_OF_MONTH, 1);
+            new ExportExcelTask(context, start, end).execute();
         }
     }
 
