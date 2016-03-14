@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class ExportActivity extends AppCompatActivity {
     private static final String TAG = "ExportActivity";
@@ -111,9 +112,7 @@ public class ExportActivity extends AppCompatActivity {
         if (editStart.getText().toString().equals("") || editEnd.getText().toString().equals("")) {
             Toast.makeText(context, "Please specify a period.", Toast.LENGTH_SHORT).show();
         } else {
-//            String myFormat = "yyyy-MM-dd";
-//            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
-//            Log.i(TAG, sdf.format(startDate.getTime()) + " || " + sdf.format(endDate.getTime()));
+            //TimeZone.setDefault(TimeZone.getTimeZone("Toronto"));//Inspired by: http://stackoverflow.com/questions/3838527/android-java-date-difference-in-days
             GregorianCalendar start = new GregorianCalendar(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DAY_OF_MONTH));
             GregorianCalendar end = new GregorianCalendar(endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH), endDate.get(Calendar.DAY_OF_MONTH));
             end.add(Calendar.DAY_OF_MONTH, 1);

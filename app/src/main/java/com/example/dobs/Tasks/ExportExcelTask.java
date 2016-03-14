@@ -1,6 +1,7 @@
 package com.example.dobs.Tasks;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.media.MediaScannerConnection;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.dobs.Activities.MainActivity;
+import com.example.dobs.Classes.Behavior;
 import com.example.dobs.Classes.BehaviorRecord;
 
 import java.io.File;
@@ -25,23 +27,27 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
     private static final String TAG = "ExportExcelTask";
-    private AppCompatActivity context;
-
     List<BehaviorRecord> behaviors;
+
+    private AppCompatActivity context;
     private Calendar startDate;
     private Calendar endDate;
+    SimpleDateFormat sdfDate;
+    SimpleDateFormat sdfTime;
+    HSSFPalette palette;
 
     public ExportExcelTask(AppCompatActivity context, Calendar startDate, Calendar endDate) {
         this.context = context;
         this.startDate = startDate;
         this.endDate = endDate;
+        sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+        sdfTime = new SimpleDateFormat("HH:mm", Locale.CANADA);
     }
 
     ProgressDialog dialog;
@@ -80,10 +86,82 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         Workbook workbook = getWorkbook(excelFileName);
         Sheet sheet = workbook.createSheet();
         sheet.setDefaultColumnWidth(20);
+        palette = ((HSSFWorkbook) sheet.getWorkbook()).getCustomPalette();
         createHeaderRow(sheet);
         createHeaderColumn(sheet);
-
+        createMainForm(sheet);
         writeToFile(workbook, excelFileName);
+    }
+
+    private void createMainForm(Sheet sheet) {
+        if (!behaviors.isEmpty()) {
+            for (BehaviorRecord record : behaviors) {
+                int[] behaviorPosition = getRowColumn(sheet, record);
+                if (behaviorPosition[0] != 0 && behaviorPosition[1] != 0) {
+                    Row row = sheet.getRow(behaviorPosition[0]);
+                    Cell cell = row.createCell(behaviorPosition[1]);
+                    cell.setCellStyle(getCellStyle(sheet, record));
+                    cell.setCellValue(getCellValue(record));
+                }
+            }
+        }
+    }
+
+    private int getCellValue(BehaviorRecord record) {
+        int position = 0;
+        for (Behavior behavior : MainActivity.patient.trackingBehaviors) {
+            if (record.behavior.name.equals(behavior.name)) {
+                return (position + 1);
+            }
+            position++;
+        }
+        return position;
+    }
+
+    private CellStyle getCellStyle(Sheet sheet, BehaviorRecord record) {
+        CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
+        cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+        cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+        int intColor = context.getResources().getColor(record.behavior.color);
+        int red = Color.red(intColor);
+        int green = Color.green(intColor);
+        int blue = Color.blue(intColor);
+        HSSFColor myColor = palette.findSimilarColor(red, green, blue);
+        cellStyle.setFillForegroundColor(myColor.getIndex());
+        return cellStyle;
+    }
+
+    private int[] getRowColumn(Sheet sheet, BehaviorRecord record) {
+        Calendar calendar = record.time;
+        String date = sdfDate.format(calendar.getTime());
+        String time = sdfTime.format(calendar.getTime());
+        int datePosition = findHeadRow(sheet, date);
+        int timePosition = findHeadColumn(sheet, time);
+        return new int[]{timePosition, datePosition};
+    }
+
+    private int findHeadRow(Sheet sheet, String cellContent) {
+        Row row = sheet.getRow(0);
+        for (Cell cell : row) {
+            if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+                if (cell.getRichStringCellValue().getString().trim().equals(cellContent)) {
+                    return cell.getColumnIndex();
+                }
+            }
+        }
+        return 0;
+    }
+
+    private int findHeadColumn(Sheet sheet, String cellContent) {
+        for (Row row : sheet) {
+            Cell cell = row.getCell(0);
+            if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+                if (cell.getRichStringCellValue().getString().trim().equals(cellContent)) {
+                    return row.getRowNum();
+                }
+            }
+        }
+        return 0;
     }
 
     private void createHeaderRow(Sheet sheet) {
@@ -103,11 +181,10 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
 
         Calendar date = Calendar.getInstance();
         date.setTime(startDate.getTime());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
         for (int i = 1; i <= days; i++) {
             Cell cellTitle = row.createCell(i);
             cellTitle.setCellStyle(cellStyle);
-            cellTitle.setCellValue(sdf.format(date.getTime()));
+            cellTitle.setCellValue(sdfDate.format(date.getTime()));
             date.add(Calendar.DAY_OF_MONTH, 1);
         }
     }
@@ -120,12 +197,11 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         Calendar date = Calendar.getInstance();
         date.set(Calendar.HOUR_OF_DAY, 7);
         date.set(Calendar.MINUTE, 30);
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.CANADA);
         for (int i = 1; i <= intervals; i++) {
             Row row = sheet.createRow(i);
             Cell firstCell = row.createCell(0);
             firstCell.setCellStyle(cellStyle);
-            firstCell.setCellValue(sdf.format(date.getTime()));
+            firstCell.setCellValue(sdfTime.format(date.getTime()));
             date.add(Calendar.MINUTE, trackingInterval);
         }
     }
@@ -134,7 +210,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         long milis1 = startDate.getTimeInMillis();
         long milis2 = endDate.getTimeInMillis();
         long diff = Math.abs(milis2 - milis1);
-        return (TimeUnit.MILLISECONDS.toDays(diff) + 1);
+        return (TimeUnit.MILLISECONDS.toDays(diff));
     }
 
     private int countIntervals(int trackingInterval) {
