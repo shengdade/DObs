@@ -1,10 +1,13 @@
 package com.example.dobs.Classes;
 
+import com.example.dobs.Activities.MainActivity;
+import com.example.dobs.Fragments.SelectContext;
 import com.example.dobs.R;
 
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 public class BehaviorRecord implements Serializable {
     public Calendar time;
@@ -15,6 +18,15 @@ public class BehaviorRecord implements Serializable {
         this.time = GregorianCalendar.getInstance();
         this.behavior = new Behavior("");
         this.environment = "";
+    }
+
+    public BehaviorRecord(Calendar time) { // generate a random record based on the specified time
+        Random rand = new Random();
+        int randBehavior = rand.nextInt(MainActivity.patient.trackingBehaviors.size());
+        int randEnvironment = rand.nextInt(SelectContext.environments.length);
+        this.time = time;
+        this.behavior = MainActivity.patient.trackingBehaviors.get(randBehavior);
+        this.environment = SelectContext.environments[randEnvironment];
     }
 
     public long getTime() {

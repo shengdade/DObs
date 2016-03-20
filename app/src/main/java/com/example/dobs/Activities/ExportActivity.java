@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.dobs.Classes.Patient;
 import com.example.dobs.R;
 import com.example.dobs.Tasks.ExportExcelTask;
+import com.example.dobs.Tasks.GenerateBehaviorsTask;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -97,6 +98,21 @@ public class ExportActivity extends AppCompatActivity {
                         onExportPressed(v);
                     }
                 }
+        );
+        btnExport.setOnLongClickListener(new View.OnLongClickListener() {
+                                             @Override
+                                             public boolean onLongClick(View arg0) {
+                                                 if (editStart.getText().toString().equals("") || editEnd.getText().toString().equals("")) {
+                                                     Toast.makeText(context, "Please specify a period.", Toast.LENGTH_SHORT).show();
+                                                 } else {
+                                                     GregorianCalendar start = new GregorianCalendar(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DAY_OF_MONTH));
+                                                     GregorianCalendar end = new GregorianCalendar(endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH), endDate.get(Calendar.DAY_OF_MONTH));
+                                                     end.add(Calendar.DAY_OF_MONTH, 1);
+                                                     new GenerateBehaviorsTask(context, start, end).execute();
+                                                 }
+                                                 return true;
+                                             }
+                                         }
         );
         btnCancel.setOnClickListener(
                 new View.OnClickListener() {

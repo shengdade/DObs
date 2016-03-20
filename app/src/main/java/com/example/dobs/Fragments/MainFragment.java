@@ -65,6 +65,16 @@ public class MainFragment extends Fragment {
             }
         });
 
+
+        btnCollect.setOnLongClickListener(new View.OnLongClickListener() {
+                                              @Override
+                                              public boolean onLongClick(View arg0) {
+                                                  MainActivity.db.deleteBehaviorTable();
+                                                  Toast.makeText(getActivity(), "Database cleared", Toast.LENGTH_SHORT).show();
+                                                  return true;
+                                              }
+                                          }
+        );
         return (resultView);
     }
 

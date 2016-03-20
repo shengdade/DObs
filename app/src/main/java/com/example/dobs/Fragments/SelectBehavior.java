@@ -77,4 +77,3 @@ public class SelectBehavior extends ListFragment {
         v.setBackgroundColor(Color.DKGRAY);
     }
 }
-

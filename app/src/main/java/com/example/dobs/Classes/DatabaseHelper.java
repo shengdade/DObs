@@ -142,4 +142,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return records;
     }
+
+    public void deleteBehaviorTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from " + TABLE_BEHAVIOR);
+        db.close();
+    }
 }
