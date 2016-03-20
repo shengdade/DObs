@@ -52,7 +52,7 @@ public class BehaviorRecord implements Serializable {
                 this.behavior.color = R.color.pink;
                 break;
             case "Aggressive-verbal":
-                this.behavior.color = R.color.white;
+                this.behavior.color = R.color.silver;
                 break;
             case "Aggressive-physical":
                 this.behavior.color = R.color.red;

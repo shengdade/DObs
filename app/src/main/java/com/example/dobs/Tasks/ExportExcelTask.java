@@ -27,6 +27,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -38,6 +39,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
     private AppCompatActivity context;
     private Calendar startDate;
     private Calendar endDate;
+    private long days;
     SimpleDateFormat sdfDate;
     SimpleDateFormat sdfTime;
     HSSFPalette palette;
@@ -48,6 +50,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         this.endDate = endDate;
         sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
         sdfTime = new SimpleDateFormat("HH:mm", Locale.CANADA);
+        days = countDays();
     }
 
     ProgressDialog dialog;
@@ -69,7 +72,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         behaviors = MainActivity.db.getBehaviorRecords(startDate, endDate);
         String excelFilePath = "Records.xls";
         try {
-            writeExcel(behaviors, excelFilePath);
+            writeExcel(excelFilePath);
         } catch (IOException e) {
             Log.e(this.getClass().getSimpleName(), e.getMessage());
         }
@@ -82,7 +85,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         Toast.makeText(context, "File saved", Toast.LENGTH_LONG).show();
     }
 
-    public void writeExcel(List<BehaviorRecord> behaviors, String excelFileName) throws IOException {
+    public void writeExcel(String excelFileName) throws IOException {
         Workbook workbook = getWorkbook(excelFileName);
         Sheet sheet = workbook.createSheet();
         sheet.setDefaultColumnWidth(20);
@@ -90,7 +93,20 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         createHeaderRow(sheet);
         createHeaderColumn(sheet);
         createMainForm(sheet);
+        createLegend(sheet);
         writeToFile(workbook, excelFileName);
+    }
+
+    private void createLegend(Sheet sheet) {
+        CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
+        cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+        Font myFont = sheet.getWorkbook().createFont();
+        myFont.setItalic(true);
+        cellStyle.setFont(myFont);
+        Row row = sheet.getRow(0);
+        Cell cellCorner = row.createCell((int) days + 2);
+        cellCorner.setCellStyle(cellStyle);
+        cellCorner.setCellValue("legend");
     }
 
     private void createMainForm(Sheet sheet) {
@@ -109,7 +125,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
 
     private int getCellValue(BehaviorRecord record) {
         int position = 0;
-        for (Behavior behavior : MainActivity.patient.trackingBehaviors) {
+        for (Behavior behavior : MainActivity.patient.totalBehaviors) {
             if (record.behavior.name.equals(behavior.name)) {
                 return (position + 1);
             }
@@ -172,8 +188,6 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         Cell cellCorner = row.createCell(0);
         cellCorner.setCellStyle(cellStyle);
         cellCorner.setCellValue("TIME");
-
-        long days = countDays();
 
         logDate(startDate);
         logDate(endDate);

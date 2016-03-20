@@ -56,7 +56,7 @@ public class ChooseBehaviors extends ListFragment {
                 } else {
                     //If this fragment is loaded from ProfileActivity,then stack count is 0, so finish
                     getActivity().finish();
-                    Toast.makeText(getActivity(), "profile created successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "profile saved", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.menu_add:

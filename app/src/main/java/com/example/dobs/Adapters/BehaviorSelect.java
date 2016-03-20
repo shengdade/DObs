@@ -71,7 +71,7 @@ public class BehaviorSelect extends ArrayAdapter<Behavior> {
                 image.setColorFilter(0xffffC0cb, PorterDuff.Mode.SRC_ATOP);
                 return (R.drawable.restless_pacing);
             case "Aggressive-verbal":
-                image.setColorFilter(0xffffffff, PorterDuff.Mode.MULTIPLY);
+                image.setColorFilter(0xffc0c0c0, PorterDuff.Mode.MULTIPLY);
                 return (R.drawable.aggressive_verbal);
             case "Aggressive-physical":
                 image.setColorFilter(0xffff0000, PorterDuff.Mode.SRC_ATOP);
