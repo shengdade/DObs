@@ -17,9 +17,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.hssf.usermodel.HSSFPalette;
@@ -40,9 +44,10 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
     private Calendar startDate;
     private Calendar endDate;
     private long days;
-    SimpleDateFormat sdfDate;
-    SimpleDateFormat sdfTime;
-    HSSFPalette palette;
+    private SimpleDateFormat sdfDate;
+    private SimpleDateFormat sdfTime;
+    private HSSFPalette palette;
+    private HashMap<Integer, BehaviorRecord> legendMap;
 
     public ExportExcelTask(AppCompatActivity context, Calendar startDate, Calendar endDate) {
         this.context = context;
@@ -50,6 +55,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         this.endDate = endDate;
         sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
         sdfTime = new SimpleDateFormat("HH:mm", Locale.CANADA);
+        legendMap = new HashMap<>();
         days = countDays();
     }
 
@@ -88,7 +94,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
     public void writeExcel(String excelFileName) throws IOException {
         Workbook workbook = getWorkbook(excelFileName);
         Sheet sheet = workbook.createSheet();
-        sheet.setDefaultColumnWidth(20);
+        sheet.setDefaultColumnWidth(18);
         palette = ((HSSFWorkbook) sheet.getWorkbook()).getCustomPalette();
         createHeaderRow(sheet);
         createHeaderColumn(sheet);
@@ -103,10 +109,22 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         Font myFont = sheet.getWorkbook().createFont();
         myFont.setItalic(true);
         cellStyle.setFont(myFont);
-        Row row = sheet.getRow(0);
-        Cell cellCorner = row.createCell((int) days + 2);
+        Row row = sheet.getRow(1);
+        int column = (int) days + 2;
+        Cell cellCorner = row.createCell(column);
         cellCorner.setCellStyle(cellStyle);
         cellCorner.setCellValue("legend");
+
+        SortedSet<Integer> keys = new TreeSet<Integer>(legendMap.keySet());
+        ArrayList<Integer> keyArray = new ArrayList<>(keys);
+        for (int i = 0; i < keyArray.size(); i++) {
+            row = sheet.getRow(i + 3);
+            Cell legend = row.createCell(column);
+            int order = keyArray.get(i);
+            BehaviorRecord record = legendMap.get(order);
+            legend.setCellStyle(getCellStyle(sheet, record, false));
+            legend.setCellValue("  " + order + ". " + record.behavior.name);
+        }
     }
 
     private void createMainForm(Sheet sheet) {
@@ -116,8 +134,11 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
                 if (behaviorPosition[0] != 0 && behaviorPosition[1] != 0) {
                     Row row = sheet.getRow(behaviorPosition[0]);
                     Cell cell = row.createCell(behaviorPosition[1]);
-                    cell.setCellStyle(getCellStyle(sheet, record));
+                    cell.setCellStyle(getCellStyle(sheet, record, true));
                     cell.setCellValue(getCellValue(record));
+                }
+                if (!legendMap.values().contains(record)) {
+                    legendMap.put(getCellValue(record), record);
                 }
             }
         }
@@ -134,9 +155,9 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         return position;
     }
 
-    private CellStyle getCellStyle(Sheet sheet, BehaviorRecord record) {
+    private CellStyle getCellStyle(Sheet sheet, BehaviorRecord record, boolean center) {
         CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
-        cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
+        if (center) cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
         cellStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
         int intColor = context.getResources().getColor(record.behavior.color);
         int red = Color.red(intColor);

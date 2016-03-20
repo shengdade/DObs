@@ -31,6 +31,8 @@ public class SelectContext extends ListFragment {
             "peri-care",
             "mealtime",
             "redirection",
+            "quiet",
+            "other",
     };
 
     @Override
