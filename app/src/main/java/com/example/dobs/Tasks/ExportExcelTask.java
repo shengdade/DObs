@@ -128,12 +128,14 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
     }
 
     private void createMainForm(Sheet sheet) {
+        Log.i(TAG, "total records: " + behaviors.size());
         if (!behaviors.isEmpty()) {
             for (BehaviorRecord record : behaviors) {
                 int[] behaviorPosition = getRowColumn(sheet, record);
                 if (behaviorPosition[0] != 0 && behaviorPosition[1] != 0) {
                     Row row = sheet.getRow(behaviorPosition[0]);
-                    Cell cell = row.createCell(behaviorPosition[1]);
+                    Cell cell = row.getCell(behaviorPosition[1]);
+                    if (cell == null) cell = row.createCell(behaviorPosition[1]);
                     cell.setCellStyle(getCellStyle(sheet, record, true));
                     cell.setCellValue(getCellValue(record));
                 }
