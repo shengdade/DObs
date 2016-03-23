@@ -22,7 +22,7 @@ public class Patient implements Serializable {
         totalBehaviors.add(new Behavior("Awake & calm", R.color.yellow));
         totalBehaviors.add(new Behavior("Noisy", R.color.orange));
         totalBehaviors.add(new Behavior("Restless, pacing", R.color.pink));
-        totalBehaviors.add(new Behavior("Aggressive-verbal", R.color.white));
+        totalBehaviors.add(new Behavior("Aggressive-verbal", R.color.silver));
         totalBehaviors.add(new Behavior("Aggressive-physical", R.color.red));
     }
 }
