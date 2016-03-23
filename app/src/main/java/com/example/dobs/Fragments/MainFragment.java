@@ -3,6 +3,7 @@ package com.example.dobs.Fragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,15 @@ public class MainFragment extends Fragment {
         });
 
 
+        btnManage.setOnLongClickListener(new View.OnLongClickListener() {
+                                             @Override
+                                             public boolean onLongClick(View arg0) {
+                                                 removeFile(MainActivity.patientFilename);
+                                                 return true;
+                                             }
+                                         }
+        );
+
         btnCollect.setOnLongClickListener(new View.OnLongClickListener() {
                                               @Override
                                               public boolean onLongClick(View arg0) {
@@ -84,6 +94,20 @@ public class MainFragment extends Fragment {
             startActivity(new Intent(getActivity(), CollectActivity.class));
         } else {
             Toast.makeText(getActivity(), "Please create a profile first", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void removeFile(String filename) {
+        try {
+            File fileToDelete = new File(getActivity().getFilesDir(), filename);
+            boolean deleted = fileToDelete.delete();
+            if (deleted) {
+                Toast.makeText(getActivity(), "Patient profile deleted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Patient profile already deleted", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Exception: " + e.getMessage());
         }
     }
 }

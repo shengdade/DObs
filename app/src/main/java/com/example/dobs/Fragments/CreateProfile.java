@@ -55,7 +55,7 @@ public class CreateProfile extends Fragment implements RadioGroup.OnCheckedChang
                     MainActivity.patient.ID = editID.getText().toString();
                 }
                 MainActivity.patient.trackingInterval = trackingIntervals;
-                //new InitializeOAuthTask(getActivity()).execute();
+                new InitializeOAuthTask(getActivity()).execute();
                 getFragmentManager().beginTransaction().replace(R.id.fragCreate, new ChooseBehaviors()).commit();
                 break;
             default:

@@ -1,6 +1,8 @@
 package com.example.dobs.Activities;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -101,15 +103,8 @@ public class ExportActivity extends AppCompatActivity {
         );
         btnExport.setOnLongClickListener(new View.OnLongClickListener() {
                                              @Override
-                                             public boolean onLongClick(View arg0) {
-                                                 if (editStart.getText().toString().equals("") || editEnd.getText().toString().equals("")) {
-                                                     Toast.makeText(context, "Please specify a period.", Toast.LENGTH_SHORT).show();
-                                                 } else {
-                                                     GregorianCalendar start = new GregorianCalendar(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DAY_OF_MONTH));
-                                                     GregorianCalendar end = new GregorianCalendar(endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH), endDate.get(Calendar.DAY_OF_MONTH));
-                                                     end.add(Calendar.DAY_OF_MONTH, 1);
-                                                     new GenerateBehaviorsTask(context, start, end).execute();
-                                                 }
+                                             public boolean onLongClick(View v) {
+                                                 onExportLongPressed(v);
                                                  return true;
                                              }
                                          }
@@ -122,6 +117,31 @@ public class ExportActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    private void generateRecords() {
+        if (editStart.getText().toString().equals("") || editEnd.getText().toString().equals("")) {
+            Toast.makeText(context, "Please specify a period.", Toast.LENGTH_SHORT).show();
+        } else {
+            GregorianCalendar start = new GregorianCalendar(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(Calendar.DAY_OF_MONTH));
+            GregorianCalendar end = new GregorianCalendar(endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH), endDate.get(Calendar.DAY_OF_MONTH));
+            end.add(Calendar.DAY_OF_MONTH, 1);
+            new GenerateBehaviorsTask(context, start, end).execute();
+        }
+    }
+
+    private void onExportLongPressed(View v) {
+        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
+        dlgAlert.setMessage("Are you sure to override all behaviors in this period, with random behaviors?");
+        dlgAlert.setNegativeButton("No", null);
+        dlgAlert.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        generateRecords();
+                    }
+                });
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
     }
 
     private void onExportPressed(View v) {

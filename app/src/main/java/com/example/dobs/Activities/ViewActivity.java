@@ -27,7 +27,7 @@ public class ViewActivity extends AppCompatActivity {
         this.context = this;
         if (MainActivity.patient == null)//In this case, the user has already created a profile
             MainActivity.patient = readPatient();
-        //new RefreshTokenTask(this).execute();
+        new RefreshTokenTask(this).execute();
         dataPicker = (DatePicker) findViewById(R.id.datePicker);
 
         Button btnBehavior = (Button) findViewById(R.id.btnBehavior);

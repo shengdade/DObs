@@ -46,7 +46,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
     private long days;
     private SimpleDateFormat sdfDate;
     private SimpleDateFormat sdfTime;
-    private HSSFPalette palette;
+    //private HSSFPalette palette;
     private HashMap<Integer, BehaviorRecord> legendMap;
 
     public ExportExcelTask(AppCompatActivity context, Calendar startDate, Calendar endDate) {
@@ -95,7 +95,7 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         Workbook workbook = getWorkbook(excelFileName);
         Sheet sheet = workbook.createSheet();
         sheet.setDefaultColumnWidth(18);
-        palette = ((HSSFWorkbook) sheet.getWorkbook()).getCustomPalette();
+        //palette = ((HSSFWorkbook) sheet.getWorkbook()).getCustomPalette();
         createHeaderRow(sheet);
         createHeaderColumn(sheet);
         createMainForm(sheet);
@@ -129,6 +129,8 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
 
     private void createMainForm(Sheet sheet) {
         Log.i(TAG, "total records: " + behaviors.size());
+        CellStyle[] cellStyles = new CellStyle[behaviors.size()];
+        int index = 0;
         if (!behaviors.isEmpty()) {
             for (BehaviorRecord record : behaviors) {
                 int[] behaviorPosition = getRowColumn(sheet, record);
@@ -136,14 +138,41 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
                     Row row = sheet.getRow(behaviorPosition[0]);
                     Cell cell = row.getCell(behaviorPosition[1]);
                     if (cell == null) cell = row.createCell(behaviorPosition[1]);
-                    cell.setCellStyle(getCellStyle(sheet, record, true));
                     cell.setCellValue(getCellValue(record));
+                    //cell.setCellStyle(getCellStyle(sheet, record, true));
+                    cellStyles[index] = sheet.getWorkbook().createCellStyle();
+                    int intColor = context.getResources().getColor(record.behavior.color);
+                    int red = Color.red(intColor);
+                    int green = Color.green(intColor);
+                    int blue = Color.blue(intColor);
+                    HSSFColor myColor = setColor((HSSFWorkbook) sheet.getWorkbook(), (byte) red, (byte) green, (byte) blue);
+                    cellStyles[index].setFillForegroundColor(myColor.getIndex());
+                    cellStyles[index].setFillPattern(CellStyle.SOLID_FOREGROUND);
+                    cellStyles[index].setAlignment(CellStyle.ALIGN_CENTER);
+                    cell.setCellStyle(cellStyles[index]);
+                    index++;
                 }
                 if (!legendMap.values().contains(record)) {
                     legendMap.put(getCellValue(record), record);
                 }
             }
         }
+    }
+
+    public HSSFColor setColor(HSSFWorkbook workbook, byte r, byte g, byte b) {
+        HSSFPalette palette = workbook.getCustomPalette();
+        HSSFColor hssfColor = null;
+        try {
+            hssfColor = palette.findColor(r, g, b);
+            if (hssfColor == null) {
+                palette.setColorAtIndex(HSSFColor.LAVENDER.index, r, g, b);
+                hssfColor = palette.getColor(HSSFColor.LAVENDER.index);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
+
+        return hssfColor;
     }
 
     private int getCellValue(BehaviorRecord record) {
@@ -165,10 +194,21 @@ public class ExportExcelTask extends AsyncTask<Void, Void, Void> {
         int red = Color.red(intColor);
         int green = Color.green(intColor);
         int blue = Color.blue(intColor);
+        HSSFPalette palette = ((HSSFWorkbook) sheet.getWorkbook()).getCustomPalette();
         HSSFColor myColor = palette.findSimilarColor(red, green, blue);
         cellStyle.setFillForegroundColor(myColor.getIndex());
         return cellStyle;
     }
+
+//    private short getColorIndex(BehaviorRecord record) {
+//        int intColor = context.getResources().getColor(record.behavior.color);
+//        int red = Color.red(intColor);
+//        int green = Color.green(intColor);
+//        int blue = Color.blue(intColor);
+//        HSSFPalette palette = ((HSSFWorkbook) sheet.getWorkbook()).getCustomPalette();
+//        HSSFColor myColor = palette.findSimilarColor(red, green, blue);
+//        return myColor.getIndex();
+//    }
 
     private int[] getRowColumn(Sheet sheet, BehaviorRecord record) {
         Calendar calendar = record.time;
