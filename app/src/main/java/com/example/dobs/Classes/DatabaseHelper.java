@@ -15,10 +15,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int SCHEMA = 1;
     static final String TABLE_BEHAVIOR = "behavior";
     static final String TABLE_EVENT = "event";
-    static final String TABLE_MOTION = "motion";
 
     //define the columns of TABLE_BEHAVIOR
     static final String TIME = "time";
+//    static final String BEHAVIOR = "behavior";
+//    static final String ENVIRONMENT = "environment";
+//    static final String[] COLUMNS_BEHAVIOR = {TIME, BEHAVIOR, ENVIRONMENT};
+
+    //define the columns of TABLE_EVENT
     static final String BEHAVIOR = "behavior";
     static final String ENVIRONMENT = "environment";
     static final String[] COLUMNS_BEHAVIOR = {TIME, BEHAVIOR, ENVIRONMENT};

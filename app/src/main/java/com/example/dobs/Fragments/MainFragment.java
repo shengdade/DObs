@@ -71,7 +71,7 @@ public class MainFragment extends Fragment {
         btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SettingActivity.class));
+                startSetting();
             }
         });
 
@@ -100,6 +100,15 @@ public class MainFragment extends Fragment {
         File file = new File(getActivity().getFilesDir(), MainActivity.patientFilename);
         if (file.exists()) {
             startActivity(new Intent(getActivity(), ExportActivity.class));
+        } else {
+            Toast.makeText(getActivity(), "Please create a profile first", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void startSetting() {
+        File file = new File(getActivity().getFilesDir(), MainActivity.patientFilename);
+        if (file.exists()) {
+            startActivity(new Intent(getActivity(), SettingActivity.class));
         } else {
             Toast.makeText(getActivity(), "Please create a profile first", Toast.LENGTH_SHORT).show();
         }

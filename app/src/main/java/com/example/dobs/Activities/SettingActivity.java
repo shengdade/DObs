@@ -2,7 +2,6 @@ package com.example.dobs.Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.dobs.Classes.Patient;
 import com.example.dobs.R;
 import com.example.dobs.Receivers.AlarmReceiver;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 public class SettingActivity extends AppCompatActivity {
     private static final String TAG = "SettingActivity";
@@ -28,6 +30,8 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         this.context = this;
+        if (MainActivity.patient == null)//In this case, the user has already created a profile
+            MainActivity.patient = readPatient();
 
         Button btnDeleteProfile = (Button) findViewById(R.id.btnDeleteProfile);
         btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
@@ -125,5 +129,19 @@ public class SettingActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e(TAG, "Exception: " + e.getMessage());
         }
+    }
+
+    private Patient readPatient() {
+        Patient patient = null;
+        try {
+            FileInputStream fis = openFileInput(MainActivity.patientFilename);
+            ObjectInputStream is = new ObjectInputStream(fis);
+            patient = (Patient) is.readObject();
+            is.close();
+            fis.close();
+        } catch (Exception e) {
+            Log.e(TAG, "Exception: " + e.getMessage());
+        }
+        return patient;
     }
 }
