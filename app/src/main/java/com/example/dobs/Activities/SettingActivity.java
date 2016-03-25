@@ -43,7 +43,7 @@ public class SettingActivity extends AppCompatActivity {
                 dlgAlert.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                MainActivity.db.deleteBehaviorTable();
+                                MainActivity.db.deleteAllTables();
                                 removeFile(MainActivity.patientFilename);
                             }
                         });
@@ -62,7 +62,7 @@ public class SettingActivity extends AppCompatActivity {
                 dlgAlert.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                MainActivity.db.deleteBehaviorTable();
+                                MainActivity.db.deleteAllTables();
                                 Toast.makeText(context, "Database cleared", Toast.LENGTH_SHORT).show();
                             }
                         });

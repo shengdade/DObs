@@ -15,7 +15,7 @@
     <string name="addBehavior2">2. Enter new behavior</string>
     <string name="addBehavior3">3. Enter new behavior</string>
     <string name="addBehavior4">4. Enter new behavior</string>
-    <string name="labelEvent">Incident Description:</string>
+    <string name="labelEvent">Please indicate which happened:</string>
     <string name="PRN">PRN Medicine</string>
     <string name="Aggressive">Aggressive Incident</string>
     <string name="oauthSuccess">Authentication success! \n\nPress okay to continue.</string>

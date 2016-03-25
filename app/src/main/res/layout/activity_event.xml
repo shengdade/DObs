@@ -14,15 +14,6 @@
         android:text="@string/labelEvent"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/editDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textCapSentences|textMultiLine"
-        android:maxLength="2000"
-        android:maxLines="4"
-        android:scrollHorizontally="false" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

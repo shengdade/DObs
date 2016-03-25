@@ -35,7 +35,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
 
         Calendar triggerTime = getFormerTime();
         long triggerInterval = getAlarmInterval();
-        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), triggerInterval, alarmIntent);
+        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), triggerInterval, alarmIntent);
 
         // Enable BootReceiver to automatically restart the alarm when the device is rebooted.
         ComponentName receiver = new ComponentName(context, BootReceiver.class);
@@ -116,6 +116,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
                 future.set(Calendar.MINUTE, 45);
             }
         }
+        future.add(Calendar.MINUTE, -1);// Ahead 1 minute
         return future;
     }
 
