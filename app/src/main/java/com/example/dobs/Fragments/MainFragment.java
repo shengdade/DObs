@@ -14,6 +14,7 @@ import com.example.dobs.Activities.CollectActivity;
 import com.example.dobs.Activities.ExportActivity;
 import com.example.dobs.Activities.MainActivity;
 import com.example.dobs.Activities.ProfileActivity;
+import com.example.dobs.Activities.SettingActivity;
 import com.example.dobs.Activities.ViewActivity;
 import com.example.dobs.Classes.DatabaseHelper;
 import com.example.dobs.R;
@@ -66,6 +67,13 @@ public class MainFragment extends Fragment {
             }
         });
 
+        Button btnSetting = (Button) resultView.findViewById(R.id.btnSetting);
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SettingActivity.class));
+            }
+        });
 
         btnManage.setOnLongClickListener(new View.OnLongClickListener() {
                                              @Override

@@ -53,23 +53,22 @@
                     android:scheme="fitbittester" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MotionActivity"></activity>
+        <activity android:name=".Activities.MotionActivity" />
         <activity
             android:name=".Activities.ExportActivity"
             android:label="Export to excel"
             android:theme="@style/Theme.AppCompat" />
 
-        <receiver android:name=".Receivers.AlarmReceiver"></receiver>
-
+        <receiver android:name=".Receivers.AlarmReceiver" />
         <receiver
             android:name=".Receivers.BootReceiver"
             android:enabled="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED">
-
-                </action>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
+
+        <activity android:name=".Activities.SettingActivity"></activity>
     </application>
 
 </manifest>

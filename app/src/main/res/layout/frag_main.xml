@@ -37,4 +37,12 @@
         android:text="@string/Export"
         android:textSize="@dimen/activity_button_size" />
 
+    <Button
+        android:id="@+id/btnSetting"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:text="@string/Setting"
+        android:textSize="@dimen/activity_button_size" />
+
 </LinearLayout>

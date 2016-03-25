@@ -23,5 +23,6 @@
     <string name="labelExport">Select a period to export:</string>
     <string name="labelStartDate">start date</string>
     <string name="labelEndDate">end date</string>
+    <string name="Setting">Setting</string>
 
 </resources>
