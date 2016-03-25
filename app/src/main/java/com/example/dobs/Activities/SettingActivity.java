@@ -80,6 +80,7 @@ public class SettingActivity extends AppCompatActivity {
         btnClearAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alarm.setAlarm(context);
                 alarm.cancelAlarm(context);
                 Toast.makeText(context, "Alarm disabled", Toast.LENGTH_SHORT).show();
             }
