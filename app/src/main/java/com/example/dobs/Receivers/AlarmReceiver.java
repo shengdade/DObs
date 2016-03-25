@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.content.WakefulBroadcastReceiver;
 
+import com.example.dobs.Activities.MainActivity;
 import com.example.dobs.Classes.Notifier;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class AlarmReceiver extends WakefulBroadcastReceiver {
     private AlarmManager alarmMgr;
@@ -27,14 +29,9 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         Intent intent = new Intent(context, AlarmReceiver.class);
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 14);
-        calendar.set(Calendar.MINUTE, 32);
-
-        alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                10 * 1000,
-                10 * 1000, alarmIntent);
+        Calendar triggerTime = getStartTime();
+        long triggerInterval = getAlarmInterval();
+        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), triggerInterval, alarmIntent);
 
         // Enable BootReceiver to automatically restart the alarm when the device is rebooted.
         ComponentName receiver = new ComponentName(context, BootReceiver.class);
@@ -58,5 +55,41 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         pm.setComponentEnabledSetting(receiver,
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
                 PackageManager.DONT_KILL_APP);
+    }
+
+    private Calendar getStartTime() {
+        Calendar current = GregorianCalendar.getInstance();
+        Calendar future = GregorianCalendar.getInstance();
+        int nowMinute = current.get(Calendar.MINUTE);
+        future.set(Calendar.SECOND, 0);
+        future.set(Calendar.MILLISECOND, 0);
+        if (MainActivity.patient.trackingInterval == 30) {
+            if (nowMinute < 30) {
+                future.set(Calendar.MINUTE, 30);
+            } else {
+                future.set(Calendar.MINUTE, 0);
+                future.add(Calendar.HOUR_OF_DAY, 1);
+            }
+        } else {
+            if (nowMinute < 15) {
+                future.set(Calendar.MINUTE, 15);
+            } else if (nowMinute < 30) {
+                future.set(Calendar.MINUTE, 30);
+            } else if (nowMinute < 45) {
+                future.set(Calendar.MINUTE, 45);
+            } else {
+                future.set(Calendar.MINUTE, 0);
+                future.add(Calendar.HOUR_OF_DAY, 1);
+            }
+        }
+        return future;
+    }
+
+    private long getAlarmInterval() {
+        if (MainActivity.patient.trackingInterval == 30) {
+            return AlarmManager.INTERVAL_HALF_HOUR;
+        } else {
+            return AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+        }
     }
 }
