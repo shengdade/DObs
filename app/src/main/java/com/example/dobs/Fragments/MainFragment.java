@@ -55,7 +55,7 @@ public class MainFragment extends Fragment {
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ViewActivity.class));
+                startView();
             }
         });
 
@@ -63,7 +63,7 @@ public class MainFragment extends Fragment {
         btnExport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ExportActivity.class));
+                startExport();
             }
         });
 
@@ -75,24 +75,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-        btnManage.setOnLongClickListener(new View.OnLongClickListener() {
-                                             @Override
-                                             public boolean onLongClick(View arg0) {
-                                                 removeFile(MainActivity.patientFilename);
-                                                 return true;
-                                             }
-                                         }
-        );
-
-        btnCollect.setOnLongClickListener(new View.OnLongClickListener() {
-                                              @Override
-                                              public boolean onLongClick(View arg0) {
-                                                  MainActivity.db.deleteBehaviorTable();
-                                                  Toast.makeText(getActivity(), "Database cleared", Toast.LENGTH_SHORT).show();
-                                                  return true;
-                                              }
-                                          }
-        );
         return (resultView);
     }
 
@@ -105,17 +87,21 @@ public class MainFragment extends Fragment {
         }
     }
 
-    public void removeFile(String filename) {
-        try {
-            File fileToDelete = new File(getActivity().getFilesDir(), filename);
-            boolean deleted = fileToDelete.delete();
-            if (deleted) {
-                Toast.makeText(getActivity(), "Patient profile deleted", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getActivity(), "Patient profile already deleted", Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Exception: " + e.getMessage());
+    private void startView() {
+        File file = new File(getActivity().getFilesDir(), MainActivity.patientFilename);
+        if (file.exists()) {
+            startActivity(new Intent(getActivity(), ViewActivity.class));
+        } else {
+            Toast.makeText(getActivity(), "Please create a profile first", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void startExport() {
+        File file = new File(getActivity().getFilesDir(), MainActivity.patientFilename);
+        if (file.exists()) {
+            startActivity(new Intent(getActivity(), ExportActivity.class));
+        } else {
+            Toast.makeText(getActivity(), "Please create a profile first", Toast.LENGTH_SHORT).show();
         }
     }
 }

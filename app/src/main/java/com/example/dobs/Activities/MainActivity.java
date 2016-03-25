@@ -14,13 +14,11 @@ public class MainActivity extends AppCompatActivity {
     public static String patientFilename = "patient.dat";
     public static DatabaseHelper db = null;
     public static String datePicked;
-    AlarmReceiver alarm = new AlarmReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        alarm.setAlarm(this);
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction().add(R.id.fragMain, new LoadScreen()).commit();

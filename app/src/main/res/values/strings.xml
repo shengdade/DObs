@@ -24,5 +24,9 @@
     <string name="labelStartDate">start date</string>
     <string name="labelEndDate">end date</string>
     <string name="Setting">Setting</string>
+    <string name="labelDeleteProfile">Delete current profile</string>
+    <string name="labelClearDatabase">Delete all the records</string>
+    <string name="labelStartAlarm">Enable alarm</string>
+    <string name="labelClearAlarm">Disable alarm</string>
 
 </resources>

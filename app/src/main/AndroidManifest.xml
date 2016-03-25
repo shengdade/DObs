@@ -58,6 +58,10 @@
             android:name=".Activities.ExportActivity"
             android:label="Export to excel"
             android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".Activities.SettingActivity"
+            android:label="Settings"
+            android:theme="@style/Theme.AppCompat" />
 
         <receiver android:name=".Receivers.AlarmReceiver" />
         <receiver
@@ -67,8 +71,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
-
-        <activity android:name=".Activities.SettingActivity"></activity>
     </application>
 
 </manifest>
