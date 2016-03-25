@@ -85,6 +85,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return i;
     }
 
+    public int updateEventRecord(EventRecord record) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TIME, record.getTime());
+        values.put(FALL, record.getHasFall());
+        values.put(PRN, record.getHasPRN());
+        values.put(AGGRESSIVE, record.getIsAggressive());
+
+        int i = db.update(TABLE_EVENT, //table
+                values, // column/value
+                TIME + " = ?", // selections
+                new String[]{String.valueOf(record.getTime())}); //selection args
+
+        db.close();
+        return i;
+    }
+
     public BehaviorRecord getBehaviorRecord(Calendar time) {
         BehaviorRecord record = null;
         SQLiteDatabase db = this.getReadableDatabase();

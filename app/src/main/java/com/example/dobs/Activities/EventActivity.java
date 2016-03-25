@@ -73,7 +73,11 @@ public class EventActivity extends AppCompatActivity {
 
         protected Void doInBackground(EventRecord... records) {
             if (!isCancelled()) {
-                MainActivity.db.addEventRecord(records[0]);
+                if (MainActivity.db.getEventRecord(records[0].time) == null) {
+                    MainActivity.db.addEventRecord(records[0]);// if the behavior does not exist, add
+                } else {
+                    MainActivity.db.updateEventRecord(records[0]);// if the behavior does exist, update
+                }
             }
             return null;
         }

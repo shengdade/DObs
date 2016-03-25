@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class EventRecord implements Serializable {
-    private Calendar time;
+    public Calendar time;
     private boolean hasFall;
     private boolean hasPRN;
     private boolean isAggressive;

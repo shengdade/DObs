@@ -24,6 +24,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.i(TAG, "Alarm received");
         Notifier notifier = new Notifier(context);
         notifier.issueNotification();
     }
@@ -34,8 +35,9 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
         Calendar triggerTime = getFormerTime();
+        logDate(triggerTime);
         long triggerInterval = getAlarmInterval();
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), triggerInterval, alarmIntent);
+        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), triggerInterval, alarmIntent);
 
         // Enable BootReceiver to automatically restart the alarm when the device is rebooted.
         ComponentName receiver = new ComponentName(context, BootReceiver.class);
@@ -126,5 +128,15 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         } else {
             return AlarmManager.INTERVAL_FIFTEEN_MINUTES;
         }
+    }
+
+//    private long getAlarmInterval() {
+//        return 1000 * 20;
+//    }
+
+    private void logDate(Calendar date) {
+        String myFormat = "yyyy-MM-dd HH:mm:ss.SSSZ";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.CANADA);
+        Log.i(TAG, sdf.format(date.getTime()));
     }
 }
