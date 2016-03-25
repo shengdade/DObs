@@ -10,6 +10,10 @@ public class EventRecord implements Serializable {
     private boolean isAggressive;
 
     public EventRecord() {
+        this.time = Calendar.getInstance();
+        this.hasFall = false;
+        this.hasPRN = false;
+        this.isAggressive = false;
     }
 
     public EventRecord(Calendar time, boolean hasFall, boolean hasPRN, boolean isAggressive) {
