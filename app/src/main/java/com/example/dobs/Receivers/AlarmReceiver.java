@@ -118,7 +118,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
                 future.set(Calendar.MINUTE, 45);
             }
         }
-        //future.add(Calendar.MINUTE, -1);// Ahead 1 minute
+        future.add(Calendar.MINUTE, -1);// Ahead 1 minute
         return future;
     }
 
