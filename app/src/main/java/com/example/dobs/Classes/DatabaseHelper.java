@@ -175,6 +175,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return records;
     }
 
+    public List<EventRecord> getAllEventRecords() {
+        List<EventRecord> records = new LinkedList<EventRecord>();
+        String query = "SELECT  * FROM " + TABLE_EVENT;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        EventRecord record = null;
+        if (cursor.moveToFirst()) {
+            do {
+                record = new EventRecord();
+                record.setTime(cursor.getLong(0));
+                record.setHasFall(cursor.getInt(1));
+                record.setHasPRN(cursor.getInt(2));
+                record.setIsAggressive(cursor.getInt(3));
+                records.add(record);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return records;
+    }
+
     public List<BehaviorRecord> getBehaviorRecords(Calendar startTime, Calendar endTime) {
         List<BehaviorRecord> records = new LinkedList<BehaviorRecord>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -232,6 +255,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return records;
+    }
+
+    public void deleteBehaviorTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from " + TABLE_BEHAVIOR);
+        db.close();
+    }
+
+    public void deleteEventTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from " + TABLE_EVENT);
+        db.close();
     }
 
     public void deleteAllTables() {

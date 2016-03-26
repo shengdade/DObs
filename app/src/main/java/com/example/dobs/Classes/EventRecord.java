@@ -22,6 +22,14 @@ public class EventRecord extends Record implements Serializable {
         this.isAggressive = isAggressive;
     }
 
+    public String getIncident() {
+        String incident = "";
+        if (hasFall) incident += "  <Fall>  ";
+        if (hasPRN) incident += "  <PRN>  ";
+        if (isAggressive) incident += "  <Aggressive>  ";
+        return incident;
+    }
+
     public long getTime() {
         return time.getTimeInMillis();
     }

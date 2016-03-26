@@ -23,7 +23,7 @@ public class AddBehaviors extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setTitle("Add a behavior");
+        getActivity().setTitle("Add new behaviors");
         setHasOptionsMenu(true);
     }
 

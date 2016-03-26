@@ -9,11 +9,14 @@ import android.widget.Toast;
 
 import com.example.dobs.Adapters.RecordView;
 import com.example.dobs.Classes.BehaviorRecord;
+import com.example.dobs.Classes.EventRecord;
 import com.example.dobs.Classes.Record;
+import com.example.dobs.Classes.TimeComparator;
 import com.example.dobs.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -43,8 +46,11 @@ public class ViewBehaviors extends ListActivity {
             dateEnd.setTime(date.getTime());
             dateEnd.add(Calendar.DAY_OF_MONTH, 1);
             List<BehaviorRecord> behaviors = MainActivity.db.getBehaviorRecords(date, dateEnd);
+            List<EventRecord> incidents = MainActivity.db.getEventRecords(date, dateEnd);
             records = new ArrayList<Record>();
             records.addAll(behaviors);
+            records.addAll(incidents);
+            Collections.sort(records, new TimeComparator());// Sort records based on time
             return null;
         }
 
@@ -55,7 +61,7 @@ public class ViewBehaviors extends ListActivity {
                 toast.show();
                 finish();
             } else {
-                RecordView adp = new RecordView(context, R.layout.view_behavior_row, records);
+                RecordView adp = new RecordView(context, R.layout.view_behavior_row, R.layout.view_incident_row, records);
                 setListAdapter(adp);
             }
         }

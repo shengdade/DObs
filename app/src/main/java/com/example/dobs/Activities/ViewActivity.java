@@ -40,6 +40,15 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
 
+        Button btnEvent = (Button) findViewById(R.id.btnEvent);
+        btnEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ViewIncidents.class);
+                startActivity(intent);
+            }
+        });
+
         Button btnMotion = (Button) findViewById(R.id.btnMotion);
         btnMotion.setOnClickListener(new View.OnClickListener() {
             @Override

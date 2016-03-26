@@ -16,10 +16,17 @@
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/btnClearDatabase"
+        android:id="@+id/btnClearBehaviors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/labelClearDatabase"
+        android:text="@string/labelClearBehaviors"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnClearIncidents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/labelClearIncidents"
         android:textAllCaps="false" />
 
     <Button

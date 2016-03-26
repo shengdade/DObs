@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -63,15 +63,17 @@
             android:name=".Activities.SettingActivity"
             android:label="Settings"
             android:theme="@style/Theme.AppCompat" />
+        <activity android:name=".Activities.ViewIncidents"></activity>
 
         <receiver android:name=".Receivers.AlarmReceiver" />
         <receiver
             android:name=".Receivers.BootReceiver"
             android:enabled="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

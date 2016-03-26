@@ -52,8 +52,8 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        Button btnClearDatabase = (Button) findViewById(R.id.btnClearDatabase);
-        btnClearDatabase.setOnClickListener(new View.OnClickListener() {
+        Button btnClearBehaviors = (Button) findViewById(R.id.btnClearBehaviors);
+        btnClearBehaviors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
@@ -62,8 +62,27 @@ public class SettingActivity extends AppCompatActivity {
                 dlgAlert.setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                MainActivity.db.deleteAllTables();
-                                Toast.makeText(context, "Database cleared", Toast.LENGTH_SHORT).show();
+                                MainActivity.db.deleteBehaviorTable();
+                                Toast.makeText(context, "All behaviors deleted", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                dlgAlert.setCancelable(true);
+                dlgAlert.create().show();
+            }
+        });
+
+        Button btnClearIncidents = (Button) findViewById(R.id.btnClearIncidents);
+        btnClearIncidents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
+                dlgAlert.setMessage("Are you sure to delete all the incident records?");
+                dlgAlert.setNegativeButton("No", null);
+                dlgAlert.setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.db.deleteEventTable();
+                                Toast.makeText(context, "All incidents deleted", Toast.LENGTH_SHORT).show();
                             }
                         });
                 dlgAlert.setCancelable(true);
