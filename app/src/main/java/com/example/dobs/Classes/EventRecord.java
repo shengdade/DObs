@@ -3,21 +3,20 @@ package com.example.dobs.Classes;
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class EventRecord implements Serializable {
-    public Calendar time;
+public class EventRecord extends Record implements Serializable {
     private boolean hasFall;
     private boolean hasPRN;
     private boolean isAggressive;
 
     public EventRecord() {
-        this.time = Calendar.getInstance();
+        super();
         this.hasFall = false;
         this.hasPRN = false;
         this.isAggressive = false;
     }
 
     public EventRecord(Calendar time, boolean hasFall, boolean hasPRN, boolean isAggressive) {
-        this.time = time;
+        super(time);
         this.hasFall = hasFall;
         this.hasPRN = hasPRN;
         this.isAggressive = isAggressive;

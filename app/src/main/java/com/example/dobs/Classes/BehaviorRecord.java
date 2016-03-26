@@ -9,22 +9,21 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-public class BehaviorRecord implements Serializable {
-    public Calendar time;
+public class BehaviorRecord extends Record implements Serializable {
     public Behavior behavior;
     public String environment;
 
     public BehaviorRecord() {
-        this.time = GregorianCalendar.getInstance();
+        super();
         this.behavior = new Behavior("");
         this.environment = "";
     }
 
     public BehaviorRecord(Calendar time) { // generate a random record based on the specified time
+        super(time);
         Random rand = new Random();
         int randBehavior = rand.nextInt(MainActivity.patient.trackingBehaviors.size());
         int randEnvironment = rand.nextInt(SelectContext.environments.length);
-        this.time = time;
         this.behavior = MainActivity.patient.trackingBehaviors.get(randBehavior);
         this.environment = SelectContext.environments[randEnvironment];
     }
