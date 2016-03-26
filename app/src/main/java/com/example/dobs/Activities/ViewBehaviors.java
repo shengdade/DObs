@@ -4,19 +4,16 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.example.dobs.Adapters.BehaviorView;
+import com.example.dobs.Adapters.RecordView;
 import com.example.dobs.Classes.BehaviorRecord;
 import com.example.dobs.R;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 public class ViewBehaviors extends ListActivity {
     private static final String TAG = "ViewBehaviors";
@@ -55,7 +52,7 @@ public class ViewBehaviors extends ListActivity {
                 toast.show();
                 finish();
             } else {
-                BehaviorView adp = new BehaviorView(context, R.layout.activity_view_row, behaviors);
+                RecordView adp = new RecordView(context, R.layout.view_behavior_row, behaviors);
                 setListAdapter(adp);
             }
         }

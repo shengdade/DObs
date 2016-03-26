@@ -40,7 +40,7 @@ public class BehaviorView extends ArrayAdapter<BehaviorRecord> {
             holder = new BehaviorHolder();
             holder.txtBehavior = (TextView) row.findViewById(R.id.labelBehavior);
             holder.txtContext = (TextView) row.findViewById(R.id.labelContext);
-            holder.txtTime = (TextView) row.findViewById(R.id.labelTime);
+            holder.txtTime = (TextView) row.findViewById(R.id.labelBehaviorTime);
             row.setTag(holder);
         } else {
             holder = (BehaviorHolder) row.getTag();
