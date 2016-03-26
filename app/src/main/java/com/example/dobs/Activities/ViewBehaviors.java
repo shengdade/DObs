@@ -9,15 +9,17 @@ import android.widget.Toast;
 
 import com.example.dobs.Adapters.RecordView;
 import com.example.dobs.Classes.BehaviorRecord;
+import com.example.dobs.Classes.Record;
 import com.example.dobs.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 public class ViewBehaviors extends ListActivity {
     private static final String TAG = "ViewBehaviors";
-    List<BehaviorRecord> behaviors;
+    List<Record> records;
     Context context = this;
 
     @Override
@@ -40,19 +42,20 @@ public class ViewBehaviors extends ListActivity {
             GregorianCalendar dateEnd = new GregorianCalendar();
             dateEnd.setTime(date.getTime());
             dateEnd.add(Calendar.DAY_OF_MONTH, 1);
-            behaviors = MainActivity.db.getBehaviorRecords(date, dateEnd);
-
+            List<BehaviorRecord> behaviors = MainActivity.db.getBehaviorRecords(date, dateEnd);
+            records = new ArrayList<Record>();
+            records.addAll(behaviors);
             return null;
         }
 
         protected void onPostExecute(Void result) {
-            if (behaviors.isEmpty()) {
+            if (records.isEmpty()) {
                 Toast toast = Toast.makeText(context, "No record on this day.", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 200);
                 toast.show();
                 finish();
             } else {
-                RecordView adp = new RecordView(context, R.layout.view_behavior_row, behaviors);
+                RecordView adp = new RecordView(context, R.layout.view_behavior_row, records);
                 setListAdapter(adp);
             }
         }

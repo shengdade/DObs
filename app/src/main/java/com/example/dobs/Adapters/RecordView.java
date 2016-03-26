@@ -9,20 +9,21 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.dobs.Classes.BehaviorRecord;
+import com.example.dobs.Classes.Record;
 import com.example.dobs.R;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class RecordView extends ArrayAdapter<BehaviorRecord> {
+public class RecordView extends ArrayAdapter<Record> {
     private static final String TAG = "BehaviorViewAdapter";
 
     Context context;
     int layoutResourceId;
-    List<BehaviorRecord> data = null;
+    List<Record> data = null;
 
-    public RecordView(Context context, int layoutResourceId, List<BehaviorRecord> data) {
+    public RecordView(Context context, int layoutResourceId, List<Record> data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -46,15 +47,15 @@ public class RecordView extends ArrayAdapter<BehaviorRecord> {
             holder = (BehaviorHolder) row.getTag();
         }
 
-        BehaviorRecord record = data.get(position);
-        holder.txtBehavior.setText(record.getBehavior());
-        holder.txtContext.setText(record.getEnvironment());
+        BehaviorRecord recordBehavior = (BehaviorRecord) data.get(position);
+        holder.txtBehavior.setText(recordBehavior.getBehavior());
+        holder.txtContext.setText(recordBehavior.getEnvironment());
 
         Calendar time = GregorianCalendar.getInstance();
-        time.setTimeInMillis(record.getTime());
+        time.setTimeInMillis(recordBehavior.getTime());
         holder.txtTime.setText(String.format("%1$tb %1$td at %1$tI:%1$tM %1$Tp", time));
 
-        row.setBackgroundColor(getContext().getResources().getColor(record.behavior.color));
+        row.setBackgroundColor(getContext().getResources().getColor(recordBehavior.behavior.color));
 
         return (row);
     }
