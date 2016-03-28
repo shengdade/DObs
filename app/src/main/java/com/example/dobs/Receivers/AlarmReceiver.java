@@ -40,7 +40,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         if (MainActivity.patient == null)//In this case, the user has already created a profile
             MainActivity.patient = readPatient(context);
 
-        Calendar triggerTime = getLaterTime();
+        Calendar triggerTime = getFormerTime();
         logDate(triggerTime);
         long triggerInterval = getAlarmInterval();
         alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), triggerInterval, alarmIntent);
@@ -69,37 +69,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
                 PackageManager.DONT_KILL_APP);
     }
 
-    private Calendar getLaterTime() {
-        Calendar current = GregorianCalendar.getInstance();
-        current.setTimeInMillis(System.currentTimeMillis());
-        Calendar future = GregorianCalendar.getInstance();
-        future.setTimeInMillis(System.currentTimeMillis());
-        int nowMinute = current.get(Calendar.MINUTE);
-        future.set(Calendar.SECOND, 0);
-        future.set(Calendar.MILLISECOND, 0);
-        if (MainActivity.patient.trackingInterval == 30) {
-            if (nowMinute < 30) {
-                future.set(Calendar.MINUTE, 30);
-            } else {
-                future.set(Calendar.MINUTE, 0);
-                future.add(Calendar.HOUR_OF_DAY, 1);
-            }
-        } else {
-            if (nowMinute < 15) {
-                future.set(Calendar.MINUTE, 15);
-            } else if (nowMinute < 30) {
-                future.set(Calendar.MINUTE, 30);
-            } else if (nowMinute < 45) {
-                future.set(Calendar.MINUTE, 45);
-            } else {
-                future.set(Calendar.MINUTE, 0);
-                future.add(Calendar.HOUR_OF_DAY, 1);
-            }
-        }
-        return future;
-    }
-
-//    private Calendar getFormerTime() {
+//    private Calendar getLaterTime() {
 //        Calendar current = GregorianCalendar.getInstance();
 //        current.setTimeInMillis(System.currentTimeMillis());
 //        Calendar future = GregorianCalendar.getInstance();
@@ -109,24 +79,54 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
 //        future.set(Calendar.MILLISECOND, 0);
 //        if (MainActivity.patient.trackingInterval == 30) {
 //            if (nowMinute < 30) {
-//                future.set(Calendar.MINUTE, 0);
-//            } else {
 //                future.set(Calendar.MINUTE, 30);
+//            } else {
+//                future.set(Calendar.MINUTE, 0);
+//                future.add(Calendar.HOUR_OF_DAY, 1);
 //            }
 //        } else {
 //            if (nowMinute < 15) {
-//                future.set(Calendar.MINUTE, 0);
-//            } else if (nowMinute < 30) {
 //                future.set(Calendar.MINUTE, 15);
-//            } else if (nowMinute < 45) {
+//            } else if (nowMinute < 30) {
 //                future.set(Calendar.MINUTE, 30);
-//            } else {
+//            } else if (nowMinute < 45) {
 //                future.set(Calendar.MINUTE, 45);
+//            } else {
+//                future.set(Calendar.MINUTE, 0);
+//                future.add(Calendar.HOUR_OF_DAY, 1);
 //            }
 //        }
-//        future.add(Calendar.MINUTE, -1);// Ahead 1 minute
 //        return future;
 //    }
+
+    private Calendar getFormerTime() {
+        Calendar current = GregorianCalendar.getInstance();
+        current.setTimeInMillis(System.currentTimeMillis());
+        Calendar future = GregorianCalendar.getInstance();
+        future.setTimeInMillis(System.currentTimeMillis());
+        int nowMinute = current.get(Calendar.MINUTE);
+        future.set(Calendar.SECOND, 0);
+        future.set(Calendar.MILLISECOND, 0);
+        if (MainActivity.patient.trackingInterval == 30) {
+            if (nowMinute < 30) {
+                future.set(Calendar.MINUTE, 0);
+            } else {
+                future.set(Calendar.MINUTE, 30);
+            }
+        } else {
+            if (nowMinute < 15) {
+                future.set(Calendar.MINUTE, 0);
+            } else if (nowMinute < 30) {
+                future.set(Calendar.MINUTE, 15);
+            } else if (nowMinute < 45) {
+                future.set(Calendar.MINUTE, 30);
+            } else {
+                future.set(Calendar.MINUTE, 45);
+            }
+        }
+        future.add(Calendar.MINUTE, -1);// Ahead 1 minute
+        return future;
+    }
 
     private long getAlarmInterval() {
         if (MainActivity.patient.trackingInterval == 30) {

@@ -96,8 +96,8 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alarm.setAlarm(context);
-                Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-                vibrator.vibrate(200);
+//                Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+//                vibrator.vibrate(200);
                 Toast.makeText(context, "Alarm enabled", Toast.LENGTH_SHORT).show();
             }
         });
