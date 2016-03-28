@@ -95,11 +95,14 @@ public class SleepLog {
     }
 
     public String getSleepSummary() {
-        return "Total in bed: \t" + getTimeInBed() +
+        String summary = "Total in bed: \t" + getTimeInBed() +
                 "\nTotal asleep: \t" + getTimeAsleep() +
                 "\n\n" + getAwakeTimes() + " times awake" +
                 "\n" + getRestlessTimes() + " times restless" +
                 "\n" + getTimeAwakeRestless() + " min awake / restless";
+        if (mainSleep_minutesToFallAsleep != 0)
+            summary += "\n" + geMinutesToFallAsleep() + " min to fall asleep";
+        return summary;
     }
 
     public ArrayList<BarEntry> getEntries() {

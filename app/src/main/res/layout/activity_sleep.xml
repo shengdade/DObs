@@ -11,6 +11,49 @@
         android:layout_height="0dp"
         android:layout_weight="40" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="13sp"
+            android:layout_height="13sp"
+            android:background="@color/gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="20sp"
+            android:paddingStart="3sp"
+            android:text="asleep" />
+
+        <View
+            android:layout_width="13sp"
+            android:layout_height="13sp"
+            android:background="@color/yellow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="20sp"
+            android:paddingStart="3sp"
+            android:text="restless" />
+
+        <View
+            android:layout_width="13sp"
+            android:layout_height="13sp"
+            android:background="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="3sp"
+            android:text="awake" />
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,7 +64,7 @@
             android:id="@+id/log"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:textColor="@android:color/holo_green_light"
             android:textSize="20sp" />
 
