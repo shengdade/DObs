@@ -2,6 +2,7 @@ package com.example.dobs.Activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -95,6 +96,8 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alarm.setAlarm(context);
+                Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+                vibrator.vibrate(200);
                 Toast.makeText(context, "Alarm enabled", Toast.LENGTH_SHORT).show();
             }
         });
