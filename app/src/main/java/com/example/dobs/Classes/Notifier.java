@@ -29,8 +29,8 @@ public class Notifier {
         mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.magnifier)
-                        .setContentTitle("Hello Dade!")
-                        .setContentText("It is time to record behaviors!");
+                        .setContentTitle("Dementia Observation")
+                        .setContentText("It's time to collect a behavior!");
         mBuilder.setContentIntent(resultPendingIntent);
         mBuilder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE);
     }
