@@ -22,7 +22,7 @@ public class FinalizeOAuthTask extends AsyncTask<Void, Void, Void> {
 
         try {
             // Instantiate the Choreo, using a previously instantiated TembooSession object, eg:
-            TembooSession session = new TembooSession("shengdade", "myFirstApp", "ArtiavNqi3yliseQZEAMX2QLTOGanVqF");
+            TembooSession session = new TembooSession("shengdade", "myFirstApp", "z8QMpb5tMIsoERAMa7wdldFNVFi4BGKS");
             //-----------------------------------------------------------------------------------------------------------------------
             FinalizeOAuth finalizeOAuthChoreo = new FinalizeOAuth(session);
             Log.i(this.getClass().toString(), "finalizeOAuthChore created: ");

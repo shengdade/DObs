@@ -40,7 +40,7 @@ public class FetchSleepTask extends AsyncTask<Void, Void, String> {
 
         try {
             // Instantiate the Choreo, using a previously instantiated TembooSession object, eg:
-            TembooSession session = new TembooSession("shengdade", "myFirstApp", "ArtiavNqi3yliseQZEAMX2QLTOGanVqF");
+            TembooSession session = new TembooSession("shengdade", "myFirstApp", "z8QMpb5tMIsoERAMa7wdldFNVFi4BGKS");
             //-----------------------------------------------------------------------------------------------------------------------
             GetSleep getSleepChoreo = new GetSleep(session);
             Log.i(this.getClass().toString(), "getSleepChoreo created");

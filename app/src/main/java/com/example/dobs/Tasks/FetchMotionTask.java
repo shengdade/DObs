@@ -42,7 +42,7 @@ public class FetchMotionTask extends AsyncTask<Void, Void, String> {
 
         try {
             // Instantiate the Choreo, using a previously instantiated TembooSession object, eg:
-            TembooSession session = new TembooSession("shengdade", "myFirstApp", "ArtiavNqi3yliseQZEAMX2QLTOGanVqF");
+            TembooSession session = new TembooSession("shengdade", "myFirstApp", "z8QMpb5tMIsoERAMa7wdldFNVFi4BGKS");
             //-----------------------------------------------------------------------------------------------------------------------
             GetIntradayTimeSeries getIntradayTimeSeriesChoreo = new GetIntradayTimeSeries(session);
             Log.i(this.getClass().toString(), "getIntradayTimeSeriesChoreo created");
