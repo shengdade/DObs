@@ -19,6 +19,7 @@ public class BehaviorActivity extends AppCompatActivity {
         behaviorRecord = new BehaviorRecord();
 
         if (savedInstanceState == null) {
+            //Add a fragment
             getFragmentManager().beginTransaction().add(R.id.fragBehavior, new SelectBehavior()).commit();
         }
     }
