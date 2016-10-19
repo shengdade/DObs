@@ -1,3 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/libs/poi-3.14-20160307.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fad7ae6d2e59c59ffdb45f1981500babfa765180">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/2/poi-3.14-20160307_746ea8c51b2731905550114baeb5b2bfbed1e98a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.2.0_6458224671bfe46a36a4e018d41bef1b8c594b6f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.2.0_dcd3fe2b22ea42f2719ee8b0424c01bf0fda1241/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.2.0_4eceb147e5ca78330cafb890600be45669d385cd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4a50821c058fb5420523215669221863f323475b">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_28c85139939e80610ad26677003e7f0e62dbfe94/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.0/support-annotations-23.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.2.0_f84e052514ecbeffe0c8dc611603759fbe62d5d9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v2.2.3/f474798fde03291398b1a016118b9809a79550b7/MPAndroidChart-v2.2.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="f474798fde03291398b1a016118b9809a79550b7">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/MPAndroidChart-v2.2.3_df154f37ec530899f6e3de4098f570dd0c9cb352/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.2.0_ef5e2cd5ff761ac0715ba7eebb09059f1a711a23/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/exploded-aar/com.android.support/customtabs/23.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="596fcec5b5b7080d2e5525dae976b5e9967a6b22">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-customtabs-23.2.0_a364648d91fa6153ce621a1b67696edc921a5b76/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="1649711d3d28250707c26edca9029feb8494dc4f">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_cc8c7c6e4141f889345450851d3e0895ff4c98b5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.2.0_67781b927fb3774b862560bd898e0b50b91349b8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/libs/Fitbit-2.16.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="cbdf49b367a2b96f80daab4a1d50e79ebf541618">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/2/Fitbit-2.16.0_6bac5ff7b02e1479ef7b9e25ec2f76b7381b3333/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/dadesheng/AndroidStudioProjects/DObs/app/libs/temboo-android-sdk-core-2.16.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="59c46c41c78be67b2c86efb9dab9390b7171582d">
+        <dex dex="/Users/dadesheng/AndroidStudioProjects/DObs/app/build/intermediates/transforms/dex/debug/folders/1000/2/temboo-android-sdk-core-2.16.0_4a24a5ce4fd734028a0677c5e0bfd7b4d9bda756/classes.dex" />
+    </item>
+
+</items>
